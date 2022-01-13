@@ -21,9 +21,9 @@ if __name__ == '__main__':
     PROJECTS = tokens.REDCAP_PROJECTS
 
     # Arguments
-    ARG_STUDY_NUMBER = "ICA-00126"
-    ARG_FROM_HF = "HF15"
-    ARG_TO_HF = "testing"
+    ARG_STUDY_NUMBER = "ICA-01638"  # "ICA-00126"
+    ARG_FROM_HF = "HF06"
+    ARG_TO_HF = "HF05"
 
     # Health facility specific fields
     CONTACT_VARIABLES = ['community', 'other_community', 'address', 'further_contact_details']
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     print("The record id of participant {} is {}".format(ARG_STUDY_NUMBER, record_id))
 
     # Get the ALL REDCap records (from every event) of this study participant with the record id
-    participant_records = project_from.export_records(records=record_id)
+    participant_records = project_from.export_records(records=[record_id])
     print(participant_records)
 
     # Remove contact details in the ID DCI as they refer to the previous residence
