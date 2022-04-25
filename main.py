@@ -21,9 +21,9 @@ if __name__ == '__main__':
     PROJECTS = tokens.REDCAP_PROJECTS
 
     # Arguments
-    ARG_STUDY_NUMBER = "ICA-01638"  # "ICA-00126"
-    ARG_FROM_HF = "HF06"
-    ARG_TO_HF = "HF05"
+    ARG_STUDY_NUMBER = "ICA-00048"
+    ARG_FROM_HF = "testing"
+    ARG_TO_HF = "testing"
 
     # Health facility specific fields
     CONTACT_VARIABLES = ['community', 'other_community', 'address', 'further_contact_details']
@@ -47,6 +47,8 @@ if __name__ == '__main__':
         participant_records[0][variable] = ''
 
     # Import study participant records to the new HF/REDCap project
+    # todo: There's a bug when migrating participants that have some SAE with the ICD10 code completed, the API does not
+    #       allow to import data on this kind of fields
     print("Importing data from {} to a new record into {}".format(ARG_STUDY_NUMBER, ARG_TO_HF))
     response = project_to.import_records(participant_records, force_auto_number=True)
     print(response)
